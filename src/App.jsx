@@ -1,11 +1,79 @@
 import { motion } from "framer-motion";
 import { Check, Mail, Users, Star } from "lucide-react";
 import Heroimg from "./assets/QuickResponse signup form.png";
-import Features from "./assets/features.png"
+import Features from "./assets/features.png";
+
+const testimonials = [
+  {
+    name: "Sarah Johnson",
+    role: "Startup Founder",
+    text: "QuickResponse doubled my subscriber list in just a month!",
+  },
+  {
+    name: "David Kim",
+    role: "Marketing Lead",
+    text: "Super easy to use and integrates seamlessly with my workflow.",
+  },
+  {
+    name: "Aisha Patel",
+    role: "Blogger",
+    text: "Finally a signup form that actually converts readers into fans.",
+  },
+];
+const plans = [
+  {
+    name: "Starter",
+    price: "$15",
+    desc: "Grow your list with email marketing and landing pages.",
+    features: [
+      "Unlimited newsletters",
+      "Unlimited Landing Pages",
+      "Welcome email series",
+      "AI campaign generator",
+      "Signup forms and popups",
+    ],
+  },
+  {
+    name: "Marketer",
+    price: "$48",
+    desc: "Automate your marketing, promote and sell across channels.",
+    features: [
+      "Advanced marketing automation",
+      "Email delivery scheduling",
+      "Advanced segmentation",
+      "Ecommerce campaigns",
+      "Promo codes",
+    ],
+  },
+  {
+    name: "Creator",
+    price: "$56",
+    desc: "Create, market, and monetize your knowledge with all-in-one software.",
+    features: [
+      "AI Course Creator",
+      "Unlimited courses",
+      "Up to 500 students",
+      "Quizzes & certificates",
+      "Premium newsletters",
+    ],
+  },
+  {
+    name: "Enterprise",
+    price: "Custom pricing",
+    desc: "Maximize revenue with tailored solutions and premium support.",
+    features: [
+      "Premium, priority support",
+      "Dedicated IP address",
+      "Single sign-on",
+      "SMS marketing",
+      "Mobile push notifications",
+    ],
+  },
+];
 
 export default function App() {
   return (
-    <div className="bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white">
+    <div className="bg-gradient-to-b from-slate-900 via-slate-700 to-slate-900 text-white">
       {/* Navbar */}
       <nav className="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
         <h1 className="text-2xl font-bold text-cyan-400">QuickResponse</h1>
@@ -22,11 +90,14 @@ export default function App() {
           transition={{ duration: 0.8 }}
           className="text-4xl md:text-6xl font-extrabold leading-tight mb-6"
         >
-          Build Your Email List <span className="text-cyan-400">Smarter</span> 🚀
+          Build Your Email List <span className="text-cyan-400">Smarter</span>{" "}
+          🚀
         </motion.h2>
         <p className="text-lg text-gray-300 max-w-2xl mx-auto mb-8">
           QuickResponse helps businesses grow with{" "}
-          <span className="text-cyan-400 font-semibold">powerful signup forms</span>{" "}
+          <span className="text-cyan-400 font-semibold">
+            powerful signup forms
+          </span>{" "}
           designed to capture more leads effortlessly.
         </p>
 
@@ -64,12 +135,26 @@ export default function App() {
 
       {/* Trusted Clients */}
       <section className="py-16 px-6 text-center">
-        <h3 className="text-xl text-gray-300 mb-6">Trusted by leading brands</h3>
+        <h3 className="text-xl text-gray-300 mb-6">
+          Trusted by leading brands
+        </h3>
         <div className="flex flex-wrap justify-center gap-8 opacity-80">
-          <img src="https://dummyimage.com/120x40/fff/aaa&text=Shopify" alt="Shopify" />
-          <img src="https://dummyimage.com/120x40/fff/aaa&text=HubSpot" alt="HubSpot" />
-          <img src="https://dummyimage.com/120x40/fff/aaa&text=Stripe" alt="Stripe" />
-          <img src="https://dummyimage.com/120x40/fff/aaa&text=Notion" alt="Notion" />
+          <img
+            src="https://dummyimage.com/120x40/fff/aaa&text=Shopify"
+            alt="Shopify"
+          />
+          <img
+            src="https://dummyimage.com/120x40/fff/aaa&text=HubSpot"
+            alt="HubSpot"
+          />
+          <img
+            src="https://dummyimage.com/120x40/fff/aaa&text=Stripe"
+            alt="Stripe"
+          />
+          <img
+            src="https://dummyimage.com/120x40/fff/aaa&text=Notion"
+            alt="Notion"
+          />
         </div>
       </section>
 
@@ -104,42 +189,81 @@ export default function App() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 bg-slate-800/50 px-6">
-        <h2 className="text-3xl font-bold text-center mb-12">What Our Clients Say</h2>
-        <div className="flex gap-6 overflow-x-auto pb-6 scrollbar-hide">
-          {[1, 2, 3, 4].map((t) => (
-            <div
-              key={t}
-              className="min-w-[300px] max-w-sm bg-slate-900 border border-slate-700 rounded-xl shadow-lg"
-            >
-              <div className="p-6">
-                <div className="flex items-center gap-2 mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 text-yellow-400" />
-                  ))}
-                </div>
-                <p className="text-gray-300 mb-4">
-                  “QuickResponse made building our email list 3x faster. The forms are stunning and easy to use!”
+      <section id="testimonials" className="py-20 px-6 lg:px-20">
+      <h2 className="text-center text-3xl md:text-5xl font-bold">
+        Loved by <span className="text-cyan-500">Users</span>
+      </h2>
+      <div className="grid md:grid-cols-3 gap-10 mt-12">
+        {testimonials.map((t, i) => (
+          <motion.div
+            key={i}
+            className="p-6 rounded-2xl border shadow "
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: i * 0.3 }}
+          >
+            <p className=" italic">“{t.text}”</p>
+            <h4 className="mt-4 font-semibold">{t.name}</h4>
+            <span className="text-sm ">{t.role}</span>
+          </motion.div>
+        ))}
+      </div>
+    </section>
+
+      {/* Pricing */}
+
+      <section className="py-20" id="pricing">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-bold sm:text-4xl mb-12 ">
+            Pricing based on your needs
+          </h2>
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+            {plans.map((plan, idx) => (
+              <motion.div
+                key={plan.name}
+                className="bg-white rounded-2xl shadow-md p-6 flex flex-col items-start"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: idx * 0.1, duration: 0.5 }}
+                viewport={{ once: true }}
+              >
+                <h3 className="text-xl font-semibold text-gray-900">
+                  {plan.name}
+                </h3>
+                <p className="mt-2 text-gray-600 text-sm">{plan.desc}</p>
+                <p className="mt-4 text-2xl font-bold text-gray-900">
+                  {plan.price}
+                  {plan.price !== "Custom pricing" && (
+                    <span className="text-gray-500 text-base"> /mo</span>
+                  )}
                 </p>
-                <div className="flex items-center gap-3">
-                  <Users className="w-8 h-8 text-cyan-400" />
-                  <div>
-                    <p className="font-semibold">Jane Doe</p>
-                    <p className="text-sm text-gray-400">Marketing Lead @ Shopify</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
+                <ul className="mt-6 space-y-2 text-left text-sm text-gray-700">
+                  {plan.features.map((feature, i) => (
+                    <li key={i} className="flex items-center">
+                      <span className="text-green-600 mr-2">✔</span> {feature}
+                    </li>
+                  ))}
+                </ul>
+                <button className="mt-6 w-full rounded-xl bg-blue-600 px-4 py-2 text-white font-medium hover:bg-blue-700 transition">
+                  {plan.price === "Custom pricing"
+                    ? "Contact Sales"
+                    : "Get Started"}
+                </button>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* Final CTA */}
       <section className="text-center py-20 px-6">
-        <h2 className="text-4xl font-extrabold mb-6">Ready to Grow Your Email List?</h2>
+        <h2 className="text-4xl font-extrabold mb-6">
+          Ready to Grow Your Email List?
+        </h2>
         <p className="text-gray-300 mb-8">
           Join thousands of businesses already using{" "}
-          <span className="text-cyan-400 font-semibold">QuickResponse</span> to connect with their audience.
+          <span className="text-cyan-400 font-semibold">QuickResponse</span> to
+          connect with their audience.
         </p>
         <button className="bg-cyan-500 hover:bg-cyan-600 text-lg px-10 py-6 rounded-xl font-semibold">
           Create Free Account
@@ -148,7 +272,12 @@ export default function App() {
 
       {/* Footer */}
       <footer className="py-10 text-center text-gray-500 border-t border-slate-700">
-        © {new Date().getFullYear()} QuickResponse. All rights reserved.
+        <div className="mt-4 flex justify-center gap-6">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="#">Contact</a>
+        </div>
+        © {new Date().getFullYear()} Muaz Muhammad. All rights reserved.
       </footer>
     </div>
   );
